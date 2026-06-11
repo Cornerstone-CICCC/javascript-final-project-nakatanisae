@@ -6,12 +6,14 @@
 function capitalizeWords(str) {
   if(str === ''){
     return ''
-  } else if(str === 'undefined'){
-    return 'String cannot be undefined'
+  } else if(str === undefined){
+    throw new Error('String cannot be undefined') 
+  } else if(typeof str !== 'string'){
+    throw new Error('Argument must be a string')
   }{
     return str
-    .trim()
     .replace('   ', ' ')
+    .trim()
     .toLowerCase()
     .split(' ')
     .map((word) => word[0].toUpperCase() + word.slice(1))
