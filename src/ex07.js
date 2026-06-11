@@ -4,14 +4,19 @@
  * @returns {{positive: number[], negative: number[], zero: number[]}}
  */
 function classifyNumbers(arr) {
-  if(arr === 'undifined'){
-    return 'Array cannot be undefined'
-  } else if(arr.includes('null')){
-    return 'Array can only contain numbers'
+  if(arr === undefined){
+    throw new Error('Array cannot be undefined')
   } else if(!Array.isArray(arr)){
-    return 'Argument must be an array'
-  }{
+    throw new Error('Argument must be an array') 
+
+  } else {
     
+    arr.forEach((number) => {
+      if(typeof number !== 'number'){
+        throw new Error('Array can only contain numbers');
+      }
+    })
+
     return {
       positive: arr.filter((number) => number > 0),
       negative: arr.filter((number) => number < 0),
