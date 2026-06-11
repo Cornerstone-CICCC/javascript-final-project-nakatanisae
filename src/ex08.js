@@ -9,7 +9,26 @@
 
 function search(arr, keyword) {
   
-  return arr.filter((item) => item.includes(keyword));
+  if(arr === undefined){
+    throw new Error('Array cannot be undefined')
+  } else if(keyword === undefined){
+    throw new Error('Keyword cannot be undefined')
+  }else if(!Array.isArray(arr)){
+    throw new Error('Argument must be an array')
+  } else if (typeof keyword !== 'string'){
+    throw new Error('Keyword must be a string')
+  } 
+  
+  const lowerCaseKeyword = keyword.toLowerCase()
+
+  arr.forEach((char) => {
+    if(typeof char !== 'string'){
+      throw new Error('Array can only contain strings')
+    }
+  });
+  return arr.filter((item) => item.toLowerCase().includes(lowerCaseKeyword));
+    
+  
 }
 
 module.exports = search;
