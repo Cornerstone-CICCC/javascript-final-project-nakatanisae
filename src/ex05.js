@@ -4,7 +4,15 @@
  * @returns {number[]}
  */
 function filterEvenNumbers(arr) {
-  return arr.filter((number) => number % 2 === 0);
+  if(arr.includes('')){
+    return 'Array cannot be undefined'
+  } else if(arr.includes('string')){
+    return 'Array can only contain numbers'
+  } else {
+    return arr.filter((number) => number % 2 === 0);
+  }
+
+  
 }
 
 module.exports = filterEvenNumbers;
