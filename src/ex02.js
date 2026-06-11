@@ -4,7 +4,14 @@
  * @returns {number}
  */
 function sumArray(arr) {
-  return arr.reduce((total, number) => total + number);
+    if(arr === 'undifined'){
+      return 'Array cannot be undefined'
+    } else {
+      return arr.reduce((total, number) => total + number, 0);
+    }
+    
+  
+  
 }
 
 module.exports = sumArray;
