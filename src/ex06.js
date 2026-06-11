@@ -6,16 +6,16 @@
 function countVowels(str) {
   const vowels = 'aeiou';
 
-  if(str === ''){
-    return 'String cannot be undefined'
-  } else if(Array.isArray(str)) {
-    return 'Argument must be a string'
+  if(str === undefined){
+    throw new Error('String cannot be undefined')
+  } else if(typeof str !== 'string') {
+    throw new Error('Argument must be a string')
   } else {
     return str
     .toLowerCase()
     .split('')
     .filter((character) => vowels.includes(character)).length;
-  }
+    }
     
   }
 
