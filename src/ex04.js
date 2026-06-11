@@ -4,10 +4,18 @@
  * @returns {number}
  */
 function calculateAverage(arr) {
-  if(arr === 'undefined'){
-    return 'Array cannot be undefined'
+  if(arr === undefined){
+    throw new Error('Array cannot be undefined')
+  } else if(!Array.isArray(arr)){
+    throw new Error('Argument must be an array')
+  } else if(arr.length === 0){
+    throw new Error('Array cannot be empty')
   }
-  const total = arr.reduce((sum, number) => sum + number, 0);
+  const total = arr.reduce((sum, number) => {
+    if(typeof number !== 'number'){
+      throw new Error('Array can only contain numbers')
+    }
+  return sum + number}, 0);
   return total / arr.length;
 }
 
