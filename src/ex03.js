@@ -5,13 +5,13 @@
  */
 function calculateFactorial(number) {
   if(number < 0){
-    return 'Number cannot be negative'
-  } else if(number === 'string') {
-    return 'Argument must be a number'
-  } else if(number === ''){
-    return 'Number cannot be undefined'
-  } else if(number === number.round){
-    return 'Number must be an integer'
+    throw new Error('Number cannot be negative')
+  } else if(number === undefined){
+    throw new Error('Number cannot be undefined') 
+  } else if(typeof number !== 'number')  {
+    throw new Error('Argument must be a number')
+  } else if(Math.round(number) !== number){
+    throw new Error('Number must be an integer')
   } else {
       let result = 1;
 
@@ -21,7 +21,6 @@ function calculateFactorial(number) {
 
       return result;
   }
-
 
 }
 
