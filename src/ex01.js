@@ -4,20 +4,34 @@
  * @returns {number}
  */
 function findMax(arr) {
-  let largestNum = arr[i]
-  const secondLargestNum = arr[i + 1]
-  for(let i = 0; i <= arr.length; i++)
-    if(largestNum > secondLargestNum){
-      return largestNum
-    } else {
-      return largestNum = secondLargestNum
+  if(arr === undefined){
+    throw new Error('Array cannot be undefined')
+  } else if(!Array.isArray(arr)){
+    throw new Error('Argument must be an array')
+  } else if (arr.length <= 0){
+    throw new Error('Array cannot be empty')
+  } 
+
+  arr.forEach((item) => {
+    if(typeof item !== 'number'){
+      throw new Error('Array can only contain numbers')
     }
-      
+  })
+
+  let largestNum = arr[0]
+  
+  for(let i = 0; i <= arr.length; i++){
+    if(largestNum < arr[i]){
+      largestNum = arr[i]
+    } 
+  }
+  return largestNum
+    
+  }
+    
     
 
-  if (arr.length <= 0) throw new Error('Array cannot be empty');
 
-  return arr[0];
-}
+  
 
 module.exports = findMax;
