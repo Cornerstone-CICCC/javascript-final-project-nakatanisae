@@ -4,13 +4,23 @@
  * @returns {{itemCount: number, totalQuantity: number, totalPrice: number}}
  */
 function createCartSummary(items) {
-  if(typeof price !== 'number' || typeof quantity !== 'number'){
-    return 'Price and quantity must be numbers'
-  } else if(price < 0 || quantity < 0){
-    return 'Price and quantity cannot be negative'
+  if(items === undefined){
+    throw new Error('Cart cannot be undefined')
+  } else if(!Array.isArray(items)){
+    throw new Error('Cart must be an array')
   }
     
-  
+  items.forEach((item) => {
+    if(item.name === undefined || item.price === undefined || item.quantity === undefined){
+      throw new Error('Each item must have a name, price, and quantity')
+    } 
+    
+    if(typeof item.price !== 'number' || typeof item.quantity !== 'number'){
+    throw new Error('Price and quantity must be numbers');
+  } else if(item.price < 0 || item.quantity < 0){
+    throw new Error('Price and quantity cannot be negative') 
+  } 
+  })
 
   return {
     itemCount: items.length,
