@@ -18,8 +18,9 @@ function analyzeText(str) {
   }
   
 
-  //for
-
+  // Feedback: several text-analysis tests fail here. Splitting on a single
+  // space counts repeated spaces as words, only "." is counted as a sentence
+  // ending, and text without punctuation should still count as one sentence.
   return {
     characters: str.length,
     words: str.trim().split(' ').length,

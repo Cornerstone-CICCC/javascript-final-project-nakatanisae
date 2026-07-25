@@ -25,6 +25,8 @@ function rotateArray(arr, positions) {
     return [];
   }
 
+  // Feedback: the negative-position tests fail because this split index is not
+  // normalized; negative positions should rotate left and wrap around the array length.
   const splitIndex = arr.length - positions;
   return [...arr.slice(splitIndex), ...arr.slice(0, splitIndex)];
 }
